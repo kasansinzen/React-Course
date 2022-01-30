@@ -1,16 +1,29 @@
 import React from 'react';
+import { Route, Switch } from "react-router-dom";
+
 import './App.css';
-import Todo from './components/Todo';
+import Layout from './components/layout/Layout';
+import MainNavigation from './components/layout/MainNavigation';
+import AllMeetupsPage from './pages/AllMeetups';
+import FavortiesPage from './pages/Favorites';
+import NewMeetupPage from './pages/NewMeetup';
 
 function App() {
-  // document.querySelector('button')?.addEventListener('click')
-
   return (
     <div>
-      <h1>My Todos</h1>
-      <Todo text="Learn React" />
-      <Todo text="Master React" />
-      <Todo text="Explore the full React course" />
+      <Layout>
+        <Switch>
+          <Route path="/" exact>
+            <AllMeetupsPage />
+          </Route>
+          <Route path="/new-meetup">
+            <NewMeetupPage />
+          </Route>
+          <Route path="/favorites">
+            <FavortiesPage />
+          </Route>
+        </Switch>
+      </Layout>
     </div>
   );
 }
